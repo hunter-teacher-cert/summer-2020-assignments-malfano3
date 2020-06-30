@@ -1,0 +1,30 @@
+Start in main method
+Output:
+**** No, I | <-- cursor left there
+Jump to zoop method
+  Jump to baffle method
+    print wug *** No, I wug
+      Jump to ping method
+        println . *** No, I wug. (cursor on new line)
+Back in zoop method, baffle done
+On new line, print *** You wugga | <-- cursor left there
+  Jump to baffle method again
+    print wug *** You wugga wug| <-- cursor left there
+      ping method
+        print . *** You wugga wug.
+Jump back to main method
+  print I | <-- cursor left there
+    Jump to baffle method
+      print wug *** I wug| <-- cursor left there
+        jump to ping method
+          print . *** I wug.
+
+
+Final output:
+No, I wug.
+You wugga wug.
+I wug.
+
+
+If baffle(); is added at the end of the ping() method,
+an infinite loop will be created.
