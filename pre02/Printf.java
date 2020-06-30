@@ -12,7 +12,7 @@ public class Printf {
 
     // incorrect statement
     // Throws illegal format conversion exception
-    //System.out.printf("My value = %f%n", x );
+    System.out.printf("My value = %f%n", x );
 
     // incorrect statement
     // Throws illegal format conversion exception
