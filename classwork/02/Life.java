@@ -67,8 +67,8 @@ import java.util.*;
   int totalRows = board.length;
   int totalColumns = board[0].length;
 
-  for (int row = r-1; r <= r+1; r++) {
-    for (int col = c-1; r <= c+1; c++) {
+  for (int row = r-1; row <= r+1; row++) {
+    for (int col = c-1; col <= c+1; col++) {
       if (row >= 0 && col >= 0 && row < totalRows && col < totalColumns) {
         if (row != r && col != c) {
           if (board[row][col] == 'O'){
