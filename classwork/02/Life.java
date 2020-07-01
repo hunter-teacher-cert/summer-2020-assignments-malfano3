@@ -63,21 +63,31 @@ import java.util.*;
  public static int numLiveNeighbors(char[][] board,int r, int c){
   // calculate the number of living neighbors around board[r][c]
 
-  int sum = 0;
-  try(board[r-1][c-1] == 'O') {
-    sum++;
+  int sumLivingNeighbors = 0;
+  int totalRows = board.length;
+  int totalColumns = board[0].length;
+
+  for (int row = r-1; r <= r+1; r++) {
+    for (int col = c-1; r <= c+1; c++) {
+      if (row >= 0 && col >= 0 && row < totalRows && col < totalColumns) {
+        if (row != r && col != c) {
+          if (board[row][col] == 'O'){
+            sumLivingNeighbors++;
+          }
+        }
+      }
+    }
   }
-  catch(ArrayIndexOutOfBoundsException e) {
-  }
-
-
-  System.out.println(sum);
-  return sum;
-
+  return sumLivingNeighbors;
   // determine if board[r][c] is living or dead
   //    if living and 2 3 neighbors then remain alive
   //    if dead and 3 neighbors then become alive
-}
+} // end numLiveNeighbors
+
+
+
+
+
 /*
    scan the board to generate a NEW board with the
    next generation
@@ -127,7 +137,8 @@ import java.util.*;
     System.out.println();
     printBoard(board_new);
 
-    numLiveNeighbors(board_old, 0, 0);
+    System.out.println("numLiveNeighbors(board_old, 5, 4)");
+    System.out.println(numLiveNeighbors(board_old, 5, 4));
 
   }
 }
