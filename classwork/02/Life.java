@@ -70,7 +70,7 @@ import java.util.*;
   for (int row = r-1; row <= r+1; row++) {
     for (int col = c-1; col <= c+1; col++) {
       if (row >= 0 && col >= 0 && row < totalRows && col < totalColumns) {
-        if (row != r && col != c) {
+        if (row != r || col != c) {
           if (board[row][col] == 'O'){
             sumLivingNeighbors++;
           }
@@ -93,10 +93,37 @@ import java.util.*;
    next generation
  */
   public static char[][] generateNextBoard(char[][] board){
+    char[][] oldBoard = board;
     char newBoard[][] = new char[10][10];
-    // fill the new board
+
+    for (int r = 0; r < oldBoard.length; r++){
+      for (int c = 0; c < oldBoard[0].length; c++) {
+        if (oldBoard[r][c] == 'O' && numLiveNeighbors(oldBoard, r, c) == 2)  {
+          newBoard[r][c] = 'O';
+        }
+        else if (oldBoard[r][c] == 'O' && numLiveNeighbors(oldBoard, r, c) == 3){
+          newBoard[r][c] = 'O';
+        }
+        else if (oldBoard[r][c] == 'O' && numLiveNeighbors(oldBoard, r, c) > 3){
+          newBoard[r][c] = 'X';
+        }
+        else if (oldBoard[r][c] == 'O' && numLiveNeighbors(oldBoard, r, c) < 2) {
+          newBoard[r][c] = 'X';
+        }
+        else if (oldBoard[r][c] == 'X' && numLiveNeighbors(oldBoard, r, c) == 3){
+          newBoard[r][c] = 'O';
+        }
+        else {
+          newBoard[r][c] = oldBoard[r][c];
+        }
+      }
+    }
+
     return newBoard;
   }
+
+
+
 
   public static char[][] initializeBoard(char[][] board) {
     setCell(board, 0, 0, 'X');
@@ -130,15 +157,19 @@ import java.util.*;
     System.out.println("Old Board");
     System.out.println();
     printBoard(board_old);
+
     char[][] board_new;
     board_new = createNewBoard(10,10);
     System.out.println();
     System.out.println("New Board");
     System.out.println();
-    printBoard(board_new);
+    //board_new = generateNextBoard(board_old);
+    //printBoard(board_new);
+    printBoard(generateNextBoard(board_old));
 
-    System.out.println("numLiveNeighbors(board_old, 5, 4)");
-    System.out.println(numLiveNeighbors(board_old, 5, 4));
+
+    // System.out.println("numLiveNeighbors(board_old, 5, 4)");
+    // System.out.println(numLiveNeighbors(board_old, 5, 4));
 
   }
 }
