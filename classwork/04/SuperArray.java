@@ -66,6 +66,20 @@ public class SuperArray {
     }
   }
 
+
+  public void remove(int index) {
+    if (index <= numberElements - 1 && index >= 0) {
+      for(int i = index; i < numberElements - 1; i++) {
+        this.data[i] = this.data[i+1];
+      }
+      this.data[numberElements] = 0;
+      numberElements--;
+    }
+  }
+
+
+
+
   public int get(int index) {
     if(index < this.data.length) {
       return this.data[index];
@@ -88,7 +102,7 @@ public class SuperArray {
   public String toString() {
     String myString = new String();
 
-    for(int i = 0; i < this.data.length; i++) {
+    for(int i = 0; i < numberElements; i++) {
       myString += this.data[i] + " ";
     } // end for loop
 
@@ -111,6 +125,9 @@ public class SuperArray {
 
 
   public static void main(String[] args) {
+
+/*
+
     SuperArray myArray = new SuperArray();
 
     myArray.add(124);
@@ -142,7 +159,7 @@ public class SuperArray {
     System.out.println(myArray.toString());
     System.out.println();
     myArray.grow();
-
+*/
 
   } // end main method
 
