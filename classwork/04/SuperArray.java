@@ -22,7 +22,28 @@ public class SuperArray {
       this.numberElements++;
     }
     else{
-      //this.data.grow();
+      this.grow();
+    }
+  }
+
+  public void add(int index, int value) {
+    if(index == this.numberElements-1) { // index filled, shift required
+      for(int i = numberElements; i > index; i--) {
+        this.data[i] = this.data[i - 1];
+      }
+      this.data[index] = value;
+      this.numberElements++;
+    }
+    else if(index >= this.numberElements) {
+      if(this.numberElements < this.data.length) {
+        this.data[index] = value;
+        this.numberElements++;
+      }
+      else{
+        this.grow();
+        this.data[index] = value;
+        this.numberElements++;
+      }
     }
   }
 
@@ -95,6 +116,7 @@ public class SuperArray {
     System.out.println("Testing toString below this:");
     System.out.println(myArray.toString());
     System.out.println();
+
 
     System.out.println("Testing grow below this:");
     myArray.grow();
