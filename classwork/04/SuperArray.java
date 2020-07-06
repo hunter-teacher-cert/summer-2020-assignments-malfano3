@@ -16,34 +16,53 @@ public class SuperArray {
     this.numberElements = 0;
   }
 
+/*
+
+ // old add method (working)
   public void add(int value) {
     if(this.numberElements < this.data.length) {
       this.data[numberElements] = value;
       this.numberElements++;
     }
     else{
-      this.grow();
+      boolean indexValid = false;
+      while(indexValid == false) {
+        this.grow();
+        indexValid = this.numberElements < this.data.length;
+      }
+      this.data[numberElements] = value;
+      this.numberElements++;
     }
   }
 
+*/
+
+
+  public void add(int value) {
+    this.add(this.numberElements, value);
+  }
+
+
   public void add(int index, int value) {
-    if(index == this.numberElements-1) { // index filled, shift required
+    if(index < this.numberElements) { // index filled, shift required
       for(int i = numberElements; i > index; i--) {
         this.data[i] = this.data[i - 1];
       }
       this.data[index] = value;
       this.numberElements++;
     }
-    else if(index >= this.numberElements) {
-      if(this.numberElements < this.data.length) {
+    else if(index >= this.numberElements && index < this.data.length) { // index free and in current array
         this.data[index] = value;
         this.numberElements++;
-      }
-      else{
+    }
+    else {
+      boolean indexValid = false;
+      while(indexValid == false){
         this.grow();
-        this.data[index] = value;
-        this.numberElements++;
+        indexValid = index < this.data.length;
       }
+      this.data[index] = value;
+      this.numberElements++;
     }
   }
 
