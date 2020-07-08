@@ -68,8 +68,13 @@ public static void main(String[] args) {
         System.out.println("\nTest remove 0, 2:");
         g.remove(0);
         System.out.println(g);
+        System.out.println("Number of Nodes: " + g.getLength());
+        System.out.println();
+
         g.remove(2);
         System.out.println(g);
+        System.out.println("Number of Nodes: " + g.getLength());
+        System.out.println();
 
 }  //main
 } //LListDriver
