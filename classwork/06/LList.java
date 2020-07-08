@@ -85,11 +85,10 @@ public void insert(int index, String value) {
 
 
 
-        // blank list, inserting at index = 0 (insert value at index = 0)
+        // inserting at index = 0
         //
-        if(this.numNodes == 0 && index == 0) {
-                this.head.setData(value);
-                numNodes++;
+        if(index == 0) {
+                this.addFront(value);
         }
 
         // blank list, inserting anywhere besides index = 0 (do nothing)
@@ -109,7 +108,8 @@ public void insert(int index, String value) {
                         tmp = tmp.getNext();
                         count++;
                 }
-                tmp.getNext().setData(value);
+                Node newNode = new Node(value);
+                tmp.setNext(newNode);
                 numNodes++;
         }
 
@@ -130,10 +130,53 @@ public void insert(int index, String value) {
                         tmp = tmp.getNext();
                         count++;
                 }
-                tmp.getNext().setData(value);
+                Node newNode = new Node(value);
+                newNode.setNext(tmp.getNext());
+                tmp.setNext(newNode);
                 numNodes++;
         }
 
+}
+
+
+public int search(String key) {
+        int count = 0;
+        Node tmp;
+        tmp = this.head;
+        String compareToKey = tmp.getData();
+
+        while(key != compareToKey) {
+                if(tmp.getNext() == null) {
+                        return -1;
+                }
+                else {
+                        tmp = tmp.getNext();
+                        compareToKey = tmp.getData();
+                        count++;
+                }
+        }
+        return count;
+}
+
+
+public void remove(int index) {
+        if(index == 0) {
+                this.head = this.head.getNext();
+        }
+        else if(index > 0 && index < numNodes) {
+                int count = 0;
+                Node tmp;
+                tmp = this.head;
+
+                while(count != index - 1) {
+                        tmp = tmp.getNext();
+                        count++;
+                }
+                tmp.setNext(tmp.getNext().getNext());
+        }
+        else {
+                // do nothing
+        }
 }
 
 

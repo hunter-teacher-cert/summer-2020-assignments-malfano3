@@ -9,18 +9,18 @@ public class Driver{
     LList l = new LList();
 
 
-    l.add("Coitenly");
+    l.addFront("Coitenly");
     System.out.println(l);
-    l.add("Curly");
+    l.addFront("Curly");
     System.out.println(l);
-    l.add("Larry");
+    l.addFront("Larry");
     System.out.println(l);
 
-    l.add("Harpo");
-    l.add("Groucho");
-    l.add("Chico");
-    l.add("Zeppo");
-    l.add("Gummo");
+    l.addFront("Harpo");
+    l.addFront("Groucho");
+    l.addFront("Chico");
+    l.addFront("Zeppo");
+    l.addFront("Gummo");
     System.out.println(l);
 
 
