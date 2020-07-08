@@ -87,7 +87,7 @@ public void insert(int index, String value) {
 
         // inserting at index = 0
         //
-        if(index == 0) {
+        if(index == 0) { 
                 this.addFront(value);
         }
 
@@ -162,6 +162,7 @@ public int search(String key) {
 public void remove(int index) {
         if(index == 0) {
                 this.head = this.head.getNext();
+                numNodes--;
         }
         else if(index > 0 && index < numNodes) {
                 int count = 0;
@@ -173,6 +174,7 @@ public void remove(int index) {
                         count++;
                 }
                 tmp.setNext(tmp.getNext().getNext());
+                numNodes--;
         }
         else {
                 // do nothing
