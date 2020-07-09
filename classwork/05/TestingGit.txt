@@ -1,0 +1,5 @@
+Git add performed on blank document
+
+Then Git add
+
+then lines 1-5 were added and saved
