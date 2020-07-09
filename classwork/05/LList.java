@@ -88,8 +88,7 @@ public void insert(int index, String value) {
         // blank list, inserting at index = 0 (insert value at index = 0)
         //
         if(this.numNodes == 0 && index == 0) {
-                this.head.setData(value);
-                numNodes++;
+                this.addFront(value);
         }
 
         // blank list, inserting anywhere besides index = 0 (do nothing)
