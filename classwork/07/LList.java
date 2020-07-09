@@ -11,6 +11,7 @@ public LList(){
 }
 
 public void addFront(String value){
+
         Node newnode = new Node(value);
 
         // first point the new node to the beginning

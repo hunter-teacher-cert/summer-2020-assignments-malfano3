@@ -40,7 +40,7 @@ public static void main(String[] args) {
 // testing insert
 
         System.out.println("\nTest insert 0, 2, 5, 10:");
-        g.insert(0, "woo!"); //here
+        g.insert(0, "woo!"); 
         System.out.println(g);
         System.out.println("Number of Nodes: " + g.getLength());
 
@@ -58,16 +58,16 @@ public static void main(String[] args) {
 
         System.out.println();
 
-        g.insert(10, "too far");
-        System.out.println(g);
-        System.out.println("Number of Nodes: " + g.getLength());
-        System.out.println();
+        // g.insert(10, "too far");
+        // System.out.println(g);
+        // System.out.println("Number of Nodes: " + g.getLength());
+        // System.out.println();
 
 
         System.out.println("\nTest search \"woo!\", \"cool\", \"too far\"");
         System.out.println(g.search("woo!"));
         System.out.println(g.search("cool"));
-        System.out.println(g.search("too far"));
+        // System.out.println(g.search("too far"));
 
         System.out.println("\nTest remove 0, 2:");
         g.remove(0);
