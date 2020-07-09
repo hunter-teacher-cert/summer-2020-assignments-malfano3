@@ -43,6 +43,13 @@ public class SuperArray {
   }
 
 
+
+
+
+
+
+
+
   public void add(int index, int value) {
     if(index < this.numberElements) { // index filled, shift required
       for(int i = numberElements; i > index; i--) {
@@ -55,7 +62,7 @@ public class SuperArray {
         this.data[index] = value;
         this.numberElements++;
     }
-    else {
+    else { // index out of bounds
       boolean indexValid = false;
       while(indexValid == false){
         this.grow();
@@ -67,6 +74,26 @@ public class SuperArray {
   }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   public void remove(int index) {
     if (index <= numberElements - 1 && index >= 0) {
       for(int i = index; i < numberElements - 1; i++) {
@@ -76,6 +103,12 @@ public class SuperArray {
       numberElements--;
     }
   }
+
+
+
+
+
+
 
 
 
