@@ -6,6 +6,10 @@ public static void main(String[] args) {
 
         LList g = new LList();
 
+
+        // test throw new IndexOutOfBoundsException();
+        // g.insert(5, "TESTING");
+
         System.out.println("Test Empty list print & isEmpty:");
         System.out.println(g);
         System.out.println(g.isEmpty());

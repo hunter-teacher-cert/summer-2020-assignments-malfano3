@@ -87,7 +87,7 @@ public void insert(int index, String value) {
 
         // inserting at index = 0
         //
-        if(index == 0) { 
+        if(index == 0) {
                 this.addFront(value);
         }
 
@@ -95,6 +95,7 @@ public void insert(int index, String value) {
         //
         else if(this.numNodes == 0 && index != 0) {
                 //do nothing
+                throw new IndexOutOfBoundsException();
         }
 
         // insert in next available space in list
@@ -117,6 +118,7 @@ public void insert(int index, String value) {
         //
         else if(index >= numNodes + 1) {
                 // do nothing
+                throw new IndexOutOfBoundsException();
         }
 
         // insert between two existing items
@@ -147,7 +149,8 @@ public int search(String key) {
 
         while(key != compareToKey) {
                 if(tmp.getNext() == null) {
-                        return -1;
+                        throw new NoSuchElementException();
+                        //return -1;
                 }
                 else {
                         tmp = tmp.getNext();
