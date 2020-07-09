@@ -180,7 +180,7 @@ public void remove(int index) {
                 numNodes--;
         }
         else {
-                // do nothing
+                throw new IndexOutOfBoundsException();
         }
 }
 
