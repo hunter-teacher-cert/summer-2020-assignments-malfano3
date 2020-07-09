@@ -8,6 +8,7 @@ private int numNodes;
 
 public LList(){
         head = null;
+        
 }
 
 public void addFront(String value){
