@@ -12,6 +12,10 @@ public LList(){
 
 public void addFront(String value){
 
+        if(value == null) {
+          throw new IllegalArgumentException();
+        }
+
         Node newnode = new Node(value);
 
         // first point the new node to the beginning
@@ -83,7 +87,9 @@ public void insert(int index, String value) {
         // if \index\ is invalid, do nothing.
         //
         //
-
+        if(value == null) {
+          throw new IllegalArgumentException();
+        }
 
 
         // inserting at index = 0
