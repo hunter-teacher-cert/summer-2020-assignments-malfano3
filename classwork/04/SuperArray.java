@@ -2,17 +2,23 @@ import java.io.*;
 import java.util.*;
 
 
+// ===================
+
+//  String SuperArray
+
+// ===================
+
 public class SuperArray {
-private int[] data;
+private String[] data;
 private int numberElements;
 
 public SuperArray() {
-        this.data = new int[10];
+        this.data = new String[10];
         this.numberElements = 0;
 }
 
 public SuperArray(int arraySize) {
-        this.data = new int[arraySize];
+        this.data = new String[arraySize];
         this.numberElements = 0;
 }
 
@@ -38,7 +44,7 @@ public SuperArray(int arraySize) {
  */
 
 
-public void add(int value) {
+public void add(String value) {
         this.add(this.numberElements, value);
 }
 
@@ -50,9 +56,7 @@ public int getNumberElements() {
 
 
 
-
-
-public void add(int index, int value) {
+public void add(int index, String value) {
         if(index < this.numberElements) { // index filled, shift required
                 for(int i = numberElements; i > index; i--) {
                         this.data[i] = this.data[i - 1];
@@ -78,24 +82,6 @@ public void add(int index, int value) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 public void remove(int index) {
         if (index <= numberElements - 1 && index >= 0) {
                 for(int i = index; i < numberElements - 1; i++) {
@@ -107,15 +93,7 @@ public void remove(int index) {
 }
 
 
-
-
-
-
-
-
-
-
-public int get(int index) {
+public String get(int index) {
         if(index < this.data.length) {
                 return this.data[index];
         }
@@ -152,10 +130,6 @@ public void grow() {
         }
         this.data = newArray;
 }
-
-
-
-
 
 
 
