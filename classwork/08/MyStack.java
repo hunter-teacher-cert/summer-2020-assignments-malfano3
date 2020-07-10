@@ -3,18 +3,18 @@ import java.util.*;
 
 public class MyStack {
 // add your internal data structure here
-private SuperArray a;
+private LList linked_list;
 private int numItems;
 
 public MyStack(){
         // add constructor code
-        this.a = new SuperArray(0);
-        this.numItems = 0;
+        this.linked_list = new LList();
+        this.numItems = this.linked_list.numNodes();
 }
 
 public void push(String data){
         // add code to push data on to the stack
-        
+
 }
 /*
    public String pop(){
