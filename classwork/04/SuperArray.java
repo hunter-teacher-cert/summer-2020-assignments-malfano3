@@ -44,14 +44,14 @@ public SuperArray(int arraySize) {
  */
 
 
+
+ public int getNumberElements() {
+         return this.numberElements;
+ }
+
+
 public void add(String value) {
-        this.add(this.numberElements, value);
-}
-
-
-
-public int getNumberElements() {
-        return this.numberElements;
+        this.add(0, value); // changed index argument to 0 for push
 }
 
 
