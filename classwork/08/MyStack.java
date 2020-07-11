@@ -21,7 +21,13 @@ public void push(String data){
 public String pop(){
         // add code to remove and return the
         // item on the top of the stack
-        if(this.numItems > 0) {
+
+        if(this.numItems == 0) {
+                return "Stack empty.";
+        }
+
+
+        else if(this.numItems > 0) {
                 String result = this.linked_list.getHead().getData();
                 this.linked_list.setHeadNext();
                 this.numItems = this.linked_list.getNumNodes();
@@ -29,7 +35,7 @@ public String pop(){
                 //this.linked_list.reduceNumNodes();
         }
         else {
-          return "";
+                return "";
         }
 
 }
@@ -63,7 +69,12 @@ public int size(){
 
 public String toString(){
 
-        if(this.numItems > 0) {
+        if(this.numItems == 0) {
+                return "Stack empty.";
+        }
+
+
+        else if(this.numItems > 0) {
 
                 String s = "< ";
 
