@@ -10,15 +10,26 @@ public LList(){
         head = null;
 }
 
+public Node getHead(){
+        return this.head;
+}
 
-public int numNodes() {
+public void setHeadNext() {
+        this.head = this.head.getNext();
+}
+
+public int getNumNodes() {
         return this.numNodes;
+}
+
+public void reduceNumNodes() {
+        this.numNodes--;
 }
 
 public void addFront(String value){
 
         if(value == null) {
-          throw new IllegalArgumentException();
+                throw new IllegalArgumentException();
         }
 
         Node newnode = new Node(value);
@@ -93,7 +104,7 @@ public void insert(int index, String value) {
         //
         //
         if(value == null) {
-          throw new IllegalArgumentException();
+                throw new IllegalArgumentException();
         }
 
 
