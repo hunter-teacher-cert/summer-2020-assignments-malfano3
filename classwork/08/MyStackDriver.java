@@ -6,6 +6,7 @@ public class MyStackDriver {
 public static void main(String[] args) {
 
         MyStack s = new MyStack();
+        s.isEmpty();
         s.push("TEST");
         s.push("ANOTHER");
         s.push("NODE");
