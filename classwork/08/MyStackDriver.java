@@ -16,6 +16,11 @@ public static void main(String[] args) {
         // push seems to be working
         // Expected output: < NODE ANOTHER TEST >
 
+
+        System.out.println("Testing TOP");
+        System.out.println(s.top());
+
+
         System.out.println("Pop");
         // System.out.println(s.size());
         s.pop();
