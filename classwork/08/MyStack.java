@@ -15,15 +15,23 @@ public MyStack(){
 public void push(String data){
         // add code to push data on to the stack
         this.linked_list.addFront(data);
+        this.numItems = this.linked_list.getNumNodes();
 }
 
 public String pop(){
         // add code to remove and return the
         // item on the top of the stack
-        String result = this.linked_list.getHead().getData();
-        this.linked_list.setHeadNext();
-        this.linked_list.reduceNumNodes();
-        return result;
+        if(this.numItems > 0) {
+                String result = this.linked_list.getHead().getData();
+                this.linked_list.setHeadNext();
+                this.numItems = this.linked_list.getNumNodes();
+                return result;
+                //this.linked_list.reduceNumNodes();
+        }
+        else {
+          return "";
+        }
+
 }
 
 
@@ -31,8 +39,11 @@ public String top(){
         // add code to return but not remove the
         // item on the top of the stack
 
-        if(this.linked_list.getHead().getData() == null) {
+        if(this.numItems == 0) {
                 return "Stack empty.";
+        }
+        else if(this.numItems < 0) {
+                throw new IndexOutOfBoundsException();
         }
         else {
                 return this.linked_list.getHead().getData();
@@ -42,7 +53,7 @@ public String top(){
 
 public boolean isEmpty(){
         // return true if the stack has no data, false otherwise
-        return this.linked_list.getHead().getData() == null;
+        return this.numItems == 0;
 }
 
 public int size(){
@@ -51,22 +62,29 @@ public int size(){
 }
 
 public String toString(){
-        String s = "< ";
 
-        Node tmp;
-        tmp = this.linked_list.getHead();
-        while (tmp != null) {
-                s = s + tmp.getData()+" ";
-                // how can we now move tmp to the next node
-                // this is the magic linked list idiom!!!!
-                // this moves a pointer to the next node!!!
-                // It's analagous to i=i+1 for an array (for loop)
-                tmp = tmp.getNext();
+        if(this.numItems > 0) {
+
+                String s = "< ";
+
+                Node tmp;
+                tmp = this.linked_list.getHead();
+                while (tmp != null) {
+                        s = s + tmp.getData()+" ";
+                        // how can we now move tmp to the next node
+                        // this is the magic linked list idiom!!!!
+                        // this moves a pointer to the next node!!!
+                        // It's analagous to i=i+1 for an array (for loop)
+                        tmp = tmp.getNext();
+                }
+
+
+                s = s + ">";
+                return s;
         }
-
-
-        s = s + ">";
-        return s;
+        else {
+                return "< >";
+        }
 }
 
 } // class MyStack

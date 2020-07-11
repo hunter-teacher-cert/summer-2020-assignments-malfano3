@@ -16,6 +16,7 @@ public Node getHead(){
 
 public void setHeadNext() {
         this.head = this.head.getNext();
+        this.numNodes--;
 }
 
 public int getNumNodes() {
