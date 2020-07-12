@@ -5,6 +5,9 @@ public class RockPaperScissors {
 
 public static String userChoice; // store user's choice
 public static String cpu; // store computer's random choice
+public static int numUserWins = 0;
+public static int numCpuWins = 0;
+public static int tieGames = 0;
 
 public static void welcomeMessage() { // display welcome message to user
         System.out.println();
@@ -56,12 +59,15 @@ public static void announceWinner() { // announce if user wins or loses game
 
         if(userChoice.equalsIgnoreCase("rock") && cpu.equalsIgnoreCase("rock")) {
                 System.out.println("Tie game!");
+                tieGames++;
         }
         else if(userChoice.equalsIgnoreCase("paper") && cpu.equalsIgnoreCase("paper")) {
                 System.out.println("Tie game!");
+                tieGames++;
         }
         else if(userChoice.equalsIgnoreCase("scissors") && cpu.equalsIgnoreCase("scissors")) {
                 System.out.println("Tie game!");
+                tieGames++;
         }
 
         // user wins conditions
@@ -72,12 +78,15 @@ public static void announceWinner() { // announce if user wins or loses game
 
         else if(userChoice.equalsIgnoreCase("rock") && cpu.equalsIgnoreCase("scissors")) {
                 System.out.println("You win!");
+                numUserWins++;
         }
         else if(userChoice.equalsIgnoreCase("paper") && cpu.equalsIgnoreCase("rock")) {
                 System.out.println("You win!");
+                numUserWins++;
         }
         else if(userChoice.equalsIgnoreCase("scissors") && cpu.equalsIgnoreCase("paper")) {
                 System.out.println("You win!");
+                numUserWins++;
         }
 
         // user loses conditions
@@ -88,12 +97,15 @@ public static void announceWinner() { // announce if user wins or loses game
 
         else if(userChoice.equalsIgnoreCase("rock") && cpu.equalsIgnoreCase("paper")) {
                 System.out.println("You lose!");
+                numCpuWins++;
         }
         else if(userChoice.equalsIgnoreCase("paper") && cpu.equalsIgnoreCase("scissors")) {
                 System.out.println("You lose!");
+                numCpuWins++;
         }
         else if(userChoice.equalsIgnoreCase("scissors") && cpu.equalsIgnoreCase("rock")) {
                 System.out.println("You lose!");
+                numCpuWins++;
         }
         System.out.println();
 }
@@ -119,6 +131,11 @@ public static void playGame() { // all game methods with loop to continue playin
                 }
 
         }
+        System.out.println();
+        System.out.println("Statistics:");
+        System.out.println("User Wins: " + numUserWins);
+        System.out.println("CPU Wins: " + numCpuWins);
+        System.out.println("Tie Games: " + tieGames);
         System.out.println();
         System.out.println("Thanks for playing!");
         System.out.println();
