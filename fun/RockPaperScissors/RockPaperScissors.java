@@ -3,26 +3,39 @@ import java.io.*;
 
 public class RockPaperScissors {
 
-public static String userChoice;
-public static String cpu;
-public static String yes_no;
+public static String userChoice; // store user's choice
+public static String cpu; // store computer's random choice
 
-public static void welcomeMessage() {
+public static void welcomeMessage() { // display welcome message to user
         System.out.println();
         System.out.println("Let's play rock, paper, scissors!");
 }
 
-public static String askForInput() {
+public static String askForInput() { // ask user for their choice
 
-        Scanner myScanner = new Scanner(System.in);
-        System.out.println();
-        System.out.print("Player 1 chooses: ");
-        userChoice = myScanner.nextLine();
+        Boolean keepLooping = true;
+
+        while(keepLooping) { // loop until user input is valid
+                Scanner myScanner = new Scanner(System.in);
+                System.out.println();
+                System.out.print("Player 1 chooses: ");
+                userChoice = myScanner.nextLine();
+
+                if(userChoice.equalsIgnoreCase("rock") ||
+                   userChoice.equalsIgnoreCase("paper") ||
+                   userChoice.equalsIgnoreCase("scissors")) {
+                        keepLooping = false;
+                }
+                else {
+                        System.out.println();
+                        System.out.println("Invalid input, enter rock, paper, or scissors.");
+                }
+        }
         //System.out.println(userChoice);
         return userChoice;
 }
 
-public static String randomChoice() {
+public static String randomChoice() { // randomly choose for computer
         String[] arr = {"rock", "paper", "scissors"};
         Random random = new Random();
         cpu = arr[random.nextInt(3)];
@@ -31,7 +44,7 @@ public static String randomChoice() {
         return cpu;
 }
 
-public static void announceWinner() {
+public static void announceWinner() { // announce if user wins or loses game
 
         System.out.println();
 
@@ -85,11 +98,12 @@ public static void announceWinner() {
         System.out.println();
 }
 
-public static void playGame() {
+public static void playGame() { // all game methods with loop to continue playing or stop
         Boolean playAgain = true;
+        String yes_no;
 
-        while(playAgain == true) {
-                System.out.print("\033[H\033[2J"); // clear terminal (Mac/Linux only)
+        while(playAgain) {
+                // System.out.print("\033[H\033[2J"); // clear terminal (Mac/Linux only)
                 welcomeMessage();
                 askForInput();
                 randomChoice();
