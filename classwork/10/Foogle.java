@@ -39,7 +39,7 @@ public static ArrayList randBetween(int numItems, int lo, int hi)
                 //retArr.add( Math.random() ); // [0,1)
                 //retArr.add( (int)Math.random() ); //0
                 //retArr.add( (int)(hi * Math.random()) ); // [0, hi)
-                retArr.add( lo + (int)(hi * Math.random()) ); // [lo ,hi)
+                retArr.add( lo + (int)(hi * Math.random()) ); // [lo , lo + hi)
         }
         return retArr;
 }  //end randBetween()
@@ -57,7 +57,7 @@ public static ArrayList addRandToPrev(int numItems, int lo, int hi)
         // begin array with number from [0 to lo)
         retArr.add( (int)(lo * Math.random()) ); // [0, lo)
 
-        // make new element = previous element + [lo, hi)
+        // make new element = previous element + [lo, lo + hi)
         for(int i=1; i<numItems; i++) {
                 //System.out.println(i);  //diagnostic under-the-hood view
                 //retArr.add( Math.random() ); // [0,1)
@@ -66,7 +66,7 @@ public static ArrayList addRandToPrev(int numItems, int lo, int hi)
                 //retArr.add( lo + (int)(hi * Math.random()) ); // [lo, hi)
                 //System.out.println(retArr.get(i-1));  //diag.
                 retArr.add( (int)retArr.get(i-1)
-                            + lo + (int)(hi * Math.random()) ); // previous element + [lo, hi)
+                            + lo + (int)(hi * Math.random()) ); // previous element + [lo, lo + hi)
         }
 
         return retArr;
