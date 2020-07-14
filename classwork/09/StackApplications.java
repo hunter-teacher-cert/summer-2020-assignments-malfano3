@@ -69,13 +69,8 @@ public static boolean parenCheck(String s) {
 
         // add all characters to myStack
         for(int i = 0; i < s.length(); i++) {
-                if(i == 0 && Character.toString(s.charAt(i)).equals("(")) {
-                        myStack.push(Character.toString(s.charAt(i)));
-                }
-                else if(i == 0 && Character.toString(s.charAt(i)).equals(")")) {
-                        return false;
-                }
-                else if(Character.toString(s.charAt(i)).equals("(")) {
+
+                if(Character.toString(s.charAt(i)).equals("(")) {
                         myStack.push(Character.toString(s.charAt(i)));
                 }
                 else if(Character.toString(s.charAt(i)).equals(")")) {
@@ -97,22 +92,34 @@ public static boolean parenCheck(String s) {
 } // end parenCheck()
 
 public static boolean parenCheckMulti(String s) {
+
+        String tempItem;
         Stack<String> myStack = new Stack<String>();
 
         // add all characters to myStack
         for(int i = 0; i < s.length(); i++) {
-                if(i == 0 && Character.toString(s.charAt(i)).equals("(")) {
+
+                if(Character.toString(s.charAt(i)).equals("(") ||
+                   Character.toString(s.charAt(i)).equals("[") ||
+                   Character.toString(s.charAt(i)).equals("{")) {
                         myStack.push(Character.toString(s.charAt(i)));
                 }
-                else if(i == 0 && Character.toString(s.charAt(i)).equals(")")) {
-                        return false;
-                }
-                else if(Character.toString(s.charAt(i)).equals("(")) {
-                        myStack.push(Character.toString(s.charAt(i)));
-                }
-                else if(Character.toString(s.charAt(i)).equals(")")) {
+                else if(Character.toString(s.charAt(i)).equals(")") ||
+                        Character.toString(s.charAt(i)).equals("]") ||
+                        Character.toString(s.charAt(i)).equals("}")) {
+
                         try {
-                                myStack.pop();
+                                tempItem = myStack.peek();
+
+                                if(tempItem.equals("(") && Character.toString(s.charAt(i)).equals(")")) {
+                                        myStack.pop();
+                                }
+                                else if(tempItem.equals("[") && Character.toString(s.charAt(i)).equals("]")) {
+                                        myStack.pop();
+                                }
+                                else if(tempItem.equals("{") && Character.toString(s.charAt(i)).equals("}")) {
+                                        myStack.pop();
+                                }
                         }
                         catch(EmptyStackException e) {
                                 return false;
@@ -128,17 +135,21 @@ public static boolean parenCheckMulti(String s) {
 
 } // end parenCheck()
 
+
+
 public static void main(String[] args) {
 
         System.out.println();
 
-        System.out.println("reverse(\"esrever gnitset\"): " + reverse("esrever gnitset")); // result: testing reverse
-        System.out.println("isPalindrome(\"racecar\"): " + isPalindrome("racecar")); // result: true
-        System.out.println("isPalindrome(\"racecars\"): " + isPalindrome("racecars")); // result: false
-        System.out.println("parenCheck(\"(2+3+4(7+3) + (8-5))\"): " + parenCheck("(2+3+4(7+3) + (8-5))")); // result: true
-        System.out.println("parenCheck(\"(2+3+4(7+3 + (8-5))\"): " + parenCheck("(2+3+4(7+3 + (8-5))")); // result: false
-        System.out.println("reverseWords(\"fun is this\"): " + reverseWords("fun is this")); // result: this is fun
-        System.out.println("isPalindromeWords(\"one two one\"): " + isPalindromeWords("one two one")); // result: true
+        System.out.println("reverse(\"esrever gnitset\"): " + reverse("esrever gnitset")); // desired result: testing reverse
+        System.out.println("isPalindrome(\"racecar\"): " + isPalindrome("racecar")); // desired result: true
+        System.out.println("isPalindrome(\"racecars\"): " + isPalindrome("racecars")); // desired result: false
+        System.out.println("parenCheck(\"(2+3+4(7+3) + (8-5))\"): " + parenCheck("(2+3+4(7+3) + (8-5))")); // desired result: true
+        System.out.println("parenCheck(\"(2+3+4(7+3 + (8-5))\"): " + parenCheck("(2+3+4(7+3 + (8-5))")); // desired result: false
+        System.out.println("reverseWords(\"fun is this\"): " + reverseWords("fun is this")); // desired result: this is fun
+        System.out.println("isPalindromeWords(\"one two one\"): " + isPalindromeWords("one two one")); // desired result: true
+        System.out.println("parenCheckMulti(\"4{7+[6(5-3)+8]})\": " + parenCheckMulti("4{7+[6(5-3)+8]}")); // desired result: true
+        System.out.println("parenCheckMulti(\"4{7+[6(5-3)+8}])\": " + parenCheckMulti("4{7+[6(5-3)+8}]")); // desired result: false
 
         System.out.println();
 
