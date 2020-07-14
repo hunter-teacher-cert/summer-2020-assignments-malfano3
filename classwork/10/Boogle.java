@@ -179,6 +179,11 @@ public static void main(String[] args) {
            System.out.println(sal05);
            System.out.println(linSearch(sal05,3));
            System.out.println(binSearch(sal05,3));
+
+
+           Systmem.out.println("")
+
+
            /*~~~~v~~~~~~move~me~down~~~1~block~at~a~time~~~~~~~~~~v~~~~
 
            ~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~*/
