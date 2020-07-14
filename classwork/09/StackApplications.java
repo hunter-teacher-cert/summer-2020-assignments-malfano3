@@ -65,8 +65,38 @@ public static boolean isPalindromeWords(String s) {
 }
 
 public static boolean parenCheck(String s) {
-        int openParenCount = 0;
-        int closedParenCount = 0;
+        Stack<String> myStack = new Stack<String>();
+
+        // add all characters to myStack
+        for(int i = 0; i < s.length(); i++) {
+                if(i == 0 && Character.toString(s.charAt(i)).equals("(")) {
+                        myStack.push(Character.toString(s.charAt(i)));
+                }
+                else if(i == 0 && Character.toString(s.charAt(i)).equals(")")) {
+                        return false;
+                }
+                else if(Character.toString(s.charAt(i)).equals("(")) {
+                        myStack.push(Character.toString(s.charAt(i)));
+                }
+                else if(Character.toString(s.charAt(i)).equals(")")) {
+                        try {
+                                myStack.pop();
+                        }
+                        catch(EmptyStackException e) {
+                                return false;
+                        }
+                }
+                else {
+                        continue;
+                }
+        } // end for loop
+
+        return myStack.empty();
+
+
+} // end parenCheck()
+
+public static boolean parenCheckMulti(String s) {
         Stack<String> myStack = new Stack<String>();
 
         // add all characters to myStack
