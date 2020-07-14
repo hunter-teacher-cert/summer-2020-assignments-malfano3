@@ -21,10 +21,10 @@ public static String reverse(String s) {
 } // end reverse()
 
 public static String reverseWords(String s) {
-        int numWords = 0;
-        int spaceCount = 0;
-        String result = new String();
-        Stack<String> myStack = new Stack<String>();
+        int numWords = 0; // will be total number of words in string
+        int spaceCount = 0; // number of spaces in original string, assuming one between words
+        String result = new String(); // string to be returned
+        Stack<String> myStack = new Stack<String>(); // creation of new stack
 
         // count how many spaces in parameter string
         for(int i = 0; i < s.length(); i++) {
@@ -32,22 +32,24 @@ public static String reverseWords(String s) {
                         spaceCount++;
                 }
         }
-        numWords = spaceCount + 1;
+        numWords = spaceCount + 1; // number of words will be number of spaces + 1
 
-        String[] arr = new String[numWords];
+        String[] arr = new String[numWords]; // array to hold each word of string s
 
-        arr = s.split(" ");
+        arr = s.split(" "); split string s by spaces and store result in array arr of length [numWords]
 
+        // push each word of arr to myStack
         for(int i = 0; i != numWords; i++) {
                 myStack.push(arr[i]);
         }
 
+        // pop each word off stack, append to String result, add a space after each word
         while(!myStack.empty()) {
                 result += myStack.pop() + " "; // extra space at the end
         } // while stack is not empty
         result = result.trim(); // remove leading and trailing spaces
         //
-        return result;
+        return result; // return reversed string of words
 } // end reverse()
 
 public static boolean isPalindrome(String s) {
