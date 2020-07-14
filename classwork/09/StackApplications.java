@@ -136,7 +136,6 @@ public static boolean parenCheckMulti(String s) {
 } // end parenCheck()
 
 
-
 public static void main(String[] args) {
 
         System.out.println();
