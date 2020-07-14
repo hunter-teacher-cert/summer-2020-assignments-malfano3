@@ -102,6 +102,10 @@ public static void main(String[] args) {
         System.out.println(s.pop());
         System.out.println();
 
+        System.out.println(s.pop().Node.toString());
+
+
+
 
 } // end main
 
