@@ -148,8 +148,8 @@ public static void main(String[] args) {
         System.out.println("parenCheck(\"(2+3+4(7+3 + (8-5))\"): " + parenCheck("(2+3+4(7+3 + (8-5))")); // desired result: false
         System.out.println("reverseWords(\"fun is this\"): " + reverseWords("fun is this")); // desired result: this is fun
         System.out.println("isPalindromeWords(\"one two one\"): " + isPalindromeWords("one two one")); // desired result: true
-        System.out.println("parenCheckMulti(\"4{7+[6(5-3)+8]})\": " + parenCheckMulti("4{7+[6(5-3)+8]}")); // desired result: true
-        System.out.println("parenCheckMulti(\"4{7+[6(5-3)+8}])\": " + parenCheckMulti("4{7+[6(5-3)+8}]")); // desired result: false
+        System.out.println("parenCheckMulti(\"4{7+[6(5-3)+8]})\"): " + parenCheckMulti("4{7+[6(5-3)+8]}")); // desired result: true
+        System.out.println("parenCheckMulti(\"4{7+[6(5-3)+8}])\"): " + parenCheckMulti("4{7+[6(5-3)+8}]")); // desired result: false
 
         System.out.println();
 
