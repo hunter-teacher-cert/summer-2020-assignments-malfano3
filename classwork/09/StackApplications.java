@@ -43,9 +43,9 @@ public static String reverseWords(String s) {
         }
 
         while(!myStack.empty()) {
-                result += myStack.pop() + " ";
+                result += myStack.pop() + " "; // extra space at the end
         } // while stack is not empty
-
+        result = result.trim(); // remove leading and trailing spaces
         //
         return result;
 } // end reverse()
@@ -57,6 +57,12 @@ public static boolean isPalindrome(String s) {
         //
         return s.equals(result);
 } // end isPalindrome()
+
+public static boolean isPalindromeWords(String s) {
+        String result = new String();
+        result = reverseWords(s);
+        return s.equals(result);
+}
 
 public static boolean parenCheck(String s) {
         int openParenCount = 0;
@@ -96,14 +102,16 @@ public static void main(String[] args) {
 
         System.out.println();
 
-        System.out.println("reverse(\"esrever gnitset\"): " + reverse("esrever gnitset")); // testing reverse
-        System.out.println("isPalindrome(\"racecar\"): " + isPalindrome("racecar")); // testing isPalindrome("racecar")
-        System.out.println("isPalindrome(\"racecars\"): " + isPalindrome("racecars")); // testing isPalindrome("racecars")
-        System.out.println("parenCheck(\"(2+3+4(7+3) + (8-5))\"): " + parenCheck("(2+3+4(7+3) + (8-5))")); // true
-        System.out.println("parenCheck(\"(2+3+4(7+3 + (8-5))\"): " + parenCheck("(2+3+4(7+3 + (8-5))")); // false
-        System.out.println("reverseWords(\"fun is this\"): " + reverseWords("fun is this"));
+        System.out.println("reverse(\"esrever gnitset\"): " + reverse("esrever gnitset")); // result: testing reverse
+        System.out.println("isPalindrome(\"racecar\"): " + isPalindrome("racecar")); // result: true
+        System.out.println("isPalindrome(\"racecars\"): " + isPalindrome("racecars")); // result: false
+        System.out.println("parenCheck(\"(2+3+4(7+3) + (8-5))\"): " + parenCheck("(2+3+4(7+3) + (8-5))")); // result: true
+        System.out.println("parenCheck(\"(2+3+4(7+3 + (8-5))\"): " + parenCheck("(2+3+4(7+3 + (8-5))")); // result: false
+        System.out.println("reverseWords(\"fun is this\"): " + reverseWords("fun is this")); // result: this is fun
+        System.out.println("isPalindromeWords(\"one two one\"): " + isPalindromeWords("one two one")); // result: true
 
         System.out.println();
+
 
 }
 
