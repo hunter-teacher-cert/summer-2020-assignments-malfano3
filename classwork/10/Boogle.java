@@ -116,6 +116,44 @@ public static ArrayList prestoSortedArrayListo(int numItems, int lo, int hi) {
 }  //end prestoSortedArrayListo()
 
 
+
+
+// find and return the index of the smallest value in the
+// ArrayList al from index lo to index hi inclusive
+public static int findSmallest(ArrayList<Integer> al, int lo, int hi){
+        // assume the first item is the smallest - call it our smallest so far
+
+        // loop over all the items
+        //   if the current item is smaller than the smalleest so far,
+        //      then the current item becomes the new smallest so far
+
+        // change this to return the correct answer
+
+
+        if(lo > hi) {
+                return -1;
+        }
+        if(lo > al.size()-1 || lo < 0) {
+                return -1;
+        }
+        if(hi > al.size()-1 || hi < 0) {
+                return -1;
+        }
+
+        int smallestIndex = lo;
+        int smallestValue = al.get(lo);
+
+        for(int i = lo + 1; i <= hi; i++) {
+                if(al.get(i) < smallestValue) {
+                        smallestIndex = i;
+                        smallestValue = al.get(i);
+                }
+        }
+
+        return smallestIndex;
+}
+
+
 public static void main(String[] args) {
         /*~~~~v~~~~~~move~me~down~~~1~block~at~a~time~~~~~~~~~~v~~~~
            System.out.println("\n"+"al000"+":");
@@ -138,6 +176,9 @@ public static void main(String[] args) {
 
 
         // test battery using sorted ArrayLists as search space
+
+        /*~~~~v~~~~~~move~me~down~~~1~block~at~a~time~~~~~~~~~~v~~~~
+
            System.out.println("\n"+"sal000"+":");
            ArrayList sal000 = prestoSortedArrayListo(0,0,0);
            System.out.println(sal000);
@@ -184,7 +225,14 @@ public static void main(String[] args) {
            Systmem.out.println("")
 
 
-           /*~~~~v~~~~~~move~me~down~~~1~block~at~a~time~~~~~~~~~~v~~~~
+           int smallIndex;
+           System.out.println("Testing findSmallest");
+           ArrayList<Integer>  slist = prestoArrayListo(20,0,200);
+           smallIndex = findSmallest(slist,0,slist.size()-1);
+           System.out.println(slist);
+           System.out.printf("Smallest is at slist[%d] and is %d\n",smallIndex,slist.get(smallIndex));
+
+
 
            ~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~*/
 
