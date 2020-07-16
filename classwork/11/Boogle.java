@@ -148,7 +148,23 @@ public static int findSmallest(ArrayList<Integer> al, int lo, int hi){
 }
 
 
-public static void sort(ArrayList<Integer> arr) {
+
+
+
+
+
+public static void swapArrayListItems(ArrayList<Integer> arr, int index1, int index2) {
+        int lowestIndexOfUnsortedValues = index1;
+        int indexOfSmallestValue = index2;
+
+        int largerValue = arr.get(lowestIndexOfUnsortedValues);
+        int smallestValue = arr.get(indexOfSmallestValue);
+
+        arr.set(lowestIndexOfUnsortedValues, smallestValue);
+        arr.set(indexOfSmallestValue, largerValue);
+}
+
+public static void selectionSort(ArrayList<Integer> arr) {
 
         int largerValue;
         int smallestValue;
@@ -158,14 +174,15 @@ public static void sort(ArrayList<Integer> arr) {
         for(int lowestIndexOfUnsortedValues = 0; lowestIndexOfUnsortedValues < high; lowestIndexOfUnsortedValues++) {
                 indexOfSmallestValue = findSmallest(arr, lowestIndexOfUnsortedValues, high);
 
-                largerValue = arr.get(lowestIndexOfUnsortedValues);
-                smallestValue = arr.get(indexOfSmallestValue);
+                swapArrayListItems(arr, lowestIndexOfUnsortedValues, indexOfSmallestValue);
 
-                arr.set(lowestIndexOfUnsortedValues, smallestValue);
-                arr.set(indexOfSmallestValue, largerValue);
         }
 
 }
+
+
+
+
 
 
 
@@ -262,19 +279,19 @@ public static void main(String[] args) {
 
 
 
-         /**
-               ~~~ The RSPB Special Trace-athon ~~~
-               YOUR MISSION:
-               Form a Dynamic Duo of Destiny or a Trio of Triump. Conjure team name portending greatness (TNPG).
-               Copypasta this into main method of your java sourcecode file containing methods linSearch and binSearch
-                 (Boogle.java for almost all of you)
-               Verify it works.
-                  (If any test calls do not yield expected outputs, there is some tuning to be done...
-                   Probably best to just grab a working version for now.)
-               On KtS, with at least 1 tracing buddy, trace out each binSearch() call.
-               NOTA BENE: The second batch of test calls are identical to the first,
-                          except that the search space has grown by 1 element...
-             **/
+        /**
+              ~~~ The RSPB Special Trace-athon ~~~
+              YOUR MISSION:
+              Form a Dynamic Duo of Destiny or a Trio of Triump. Conjure team name portending greatness (TNPG).
+              Copypasta this into main method of your java sourcecode file containing methods linSearch and binSearch
+                (Boogle.java for almost all of you)
+              Verify it works.
+                 (If any test calls do not yield expected outputs, there is some tuning to be done...
+                  Probably best to just grab a working version for now.)
+              On KtS, with at least 1 tracing buddy, trace out each binSearch() call.
+              NOTA BENE: The second batch of test calls are identical to the first,
+                         except that the search space has grown by 1 element...
+         **/
 
 
 /*
@@ -311,18 +328,18 @@ public static void main(String[] args) {
             System.out.println(binSearch(salamander, 3)); // -1
             System.out.println(binSearch(salamander, 9)); // -1
 
+ */
+        System.out.println("\n"+"sal05"+":");
+        ArrayList sal05 = prestoArrayListo(20,1,100);
+        System.out.println(sal05);
 
-            System.out.println("\n"+"sal05"+":");
-            ArrayList sal05 = prestoArrayListo(20,1,100);
-            System.out.println(sal05);
+        System.out.println();
 
-            System.out.println();
+        System.out.println("Sorted Array");
+        selectionSort(sal05);
+        System.out.println(sal05);
 
-            System.out.println("Sorted Array");
-            sort(sal05);
-            System.out.println(sal05);
 
-*/
 
 }  //end main
 
