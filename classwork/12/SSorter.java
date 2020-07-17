@@ -6,8 +6,7 @@ public class SSorter
 
 
   //return ArrayList of random ints on range [lo,lo+hi)
-  public static ArrayList<Integer> prestoArrayListo(int numItems, int lo, int hi)
-  {
+  public static ArrayList<Integer> prestoArrayListo(int numItems, int lo, int hi) {
     ArrayList<Integer> retArr = new ArrayList<Integer>();
 
     for(int i=0; i<numItems; i++) {
@@ -26,7 +25,7 @@ public class SSorter
 
   // find and return the index of the smallest value in the
   // ArrayList al from index lo to index hi inclusive
-  public static int findSmallest(ArrayList<Integer> al, int lo, int hi){
+  public static int findSmallest(ArrayList<Integer> al, int lo, int hi) {
     int maxIndexSoFar = lo;
     for (int i = lo; i <=hi; i++) {
       if (al.get(i) < al.get(maxIndexSoFar)){
@@ -56,8 +55,8 @@ public class SSorter
   //##################################################
   //##################################################
 
-  public static void main( String[] args )
-  {
+  public static void main(String[] args) {
+
     ArrayList<Integer> randos = prestoArrayListo(100000, 0, 100);
 
     // System.out.println(randos);
