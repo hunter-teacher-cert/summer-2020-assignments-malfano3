@@ -181,6 +181,15 @@ public static void selectionSort(ArrayList<Integer> arr) {
 }
 
 
+// returns a sub-array of items from index "lo" to "hi" (not including hi)
+public static ArrayList<Integer> slice(ArrayList<Integer> al, int lo, int hi) {
+
+        ArrayList<Integer> sub = new ArrayList<Integer>();
+        for (; lo < hi; lo++) {
+                sub.add( al.get(lo) );
+        }//copy
+        return sub;
+}//slice
 
 
 
