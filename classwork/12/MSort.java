@@ -87,7 +87,7 @@ public static ArrayList<Integer> merge(ArrayList<Integer> a, ArrayList<Integer> 
                 }
 
                 // must put above conditionals first since a.get(a_index) or b.get(b_index)
-                // will eventually be out of bounds before the while loop is over
+                // will eventually be out of bounds before the while loop is over 
 
                 else if(a.get(a_index) <= b.get(b_index)) { // if element of a <= element of b
                         mergedList.add(mergedListIndex, a.get(a_index)); // add element of a to mergedList
