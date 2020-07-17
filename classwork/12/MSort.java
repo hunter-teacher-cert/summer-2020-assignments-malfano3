@@ -12,7 +12,7 @@ public static ArrayList<Integer> prestoArrayListo(int numItems, int lo, int hi) 
                 retArr.add( lo + (int)(hi * Math.random()) ); // [lo,lo+hi)
         }
         return retArr;
-}  //end prestoArrayListo()
+}      //end prestoArrayListo()
 
 // find and return the index of the smallest value in the
 // ArrayList al from index lo to index hi inclusive
@@ -38,7 +38,7 @@ public static void selectionSort(ArrayList<Integer> al) {
                 al.set(lo, temp);
         }
 
-}  //selectionSort
+}      //selectionSort
 
 //returns a sublist of al containing the elements at indices in the range [lo, hi)
 public static ArrayList<Integer> slice(ArrayList<Integer> al, int lo, int hi) {
@@ -48,7 +48,7 @@ public static ArrayList<Integer> slice(ArrayList<Integer> al, int lo, int hi) {
                 sub.add( al.get(lo) );
         }//copy
         return sub;
-}  //slice
+}      //slice
 
 
 //Input: 2 SORTED ArrayLists
@@ -87,7 +87,7 @@ public static ArrayList<Integer> merge(ArrayList<Integer> a, ArrayList<Integer> 
                 }
 
                 // must put above conditionals first since a.get(a_index) or b.get(b_index)
-                // will eventually be out of bounds before the while loop is over 
+                // will eventually be out of bounds before the while loop is over
 
                 else if(a.get(a_index) <= b.get(b_index)) { // if element of a <= element of b
                         mergedList.add(mergedListIndex, a.get(a_index)); // add element of a to mergedList
@@ -102,27 +102,46 @@ public static ArrayList<Integer> merge(ArrayList<Integer> a, ArrayList<Integer> 
 
         } // end while
 
-        //return the new list
+//return the new list
         return mergedList; // return mergedList
 
 }  // end merge()
+
+
+public static ArrayList<Integer> mergeSort(ArrayList<Integer> arr) {
+        if(arr.size() <= 1) {
+                return arr;
+        }
+
+        // split into 2 ArrayLists of somewhat equal size
+        int mid = arr.size() / 2;
+        ArrayList<Integer> bottomHalf = slice(arr, 0, mid);
+        ArrayList<Integer> topHalf = slice(arr, mid, arr.size());
+
+        return merge(mergeSort(bottomHalf), mergeSort(topHalf));
+} // end mergeSort()
 
 
 public static void main(String[] args) {
 
         int numItems = 10;
 
+        ArrayList<Integer> randList0 = prestoArrayListo(numItems, 0, 100);
         ArrayList<Integer> randList1 = prestoArrayListo(numItems, 0, 100);
         ArrayList<Integer> randList2 = prestoArrayListo(numItems, 0, 100);
 
-        selectionSort(randList1);
-        selectionSort(randList2);
+        // selectionSort(randList1);
+        // selectionSort(randList2);
 
-        System.out.printf("randList1: %s\n", randList1);
-        System.out.printf("randList2: %s\n", randList2);
+        System.out.printf("randList0: %s\n", randList0);
+        // System.out.printf("randList1: %s\n", randList1);
+        // System.out.printf("randList2: %s\n", randList2);
 
-        ArrayList<Integer> mergedList = merge(randList1, randList2);
-        System.out.printf("mergedList: %s\n", mergedList);
+        // ArrayList<Integer> mergedList = merge(randList1, randList2);
+        // System.out.printf("mergedList: %s\n", mergedList);
+
+        System.out.printf("mergeSort(randList0): %s\n", mergeSort(randList0));
+
 
 }  //end main
 
