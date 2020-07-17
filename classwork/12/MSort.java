@@ -54,6 +54,7 @@ public static ArrayList<Integer> slice(ArrayList<Integer> al, int lo, int hi) {
 //Input: 2 SORTED ArrayLists
 //returns 1 new SORTED ArrayList containing all the elements from lists a and b
 public static ArrayList<Integer> merge(ArrayList<Integer> a, ArrayList<Integer> b) {
+
         //setup variables
         //   make a new ArrayList
         //   indices for each input
@@ -84,13 +85,17 @@ public static ArrayList<Integer> merge(ArrayList<Integer> a, ArrayList<Integer> 
                                 a_index++;
                         }
                 }
-                else if(a.get(a_index) <= b.get(b_index)) {
-                        mergedList.add(mergedListIndex, a.get(a_index));
+
+                // must put above conditionals first since a.get(a_index) or b.get(b_index)
+                // will eventually be out of bounds before the while loop is over
+
+                else if(a.get(a_index) <= b.get(b_index)) { // if element of a <= element of b
+                        mergedList.add(mergedListIndex, a.get(a_index)); // add element of a to mergedList
                         mergedListIndex++;
                         a_index++;
                 }
-                else if(b.get(b_index) < a.get(a_index)) {
-                        mergedList.add(mergedListIndex, b.get(b_index));
+                else if(b.get(b_index) < a.get(a_index)) { // if element of b < element of a
+                        mergedList.add(mergedListIndex, b.get(b_index)); // add element of b to mergedList
                         mergedListIndex++;
                         b_index++;
                 }
@@ -98,7 +103,7 @@ public static ArrayList<Integer> merge(ArrayList<Integer> a, ArrayList<Integer> 
         } // end while
 
         //return the new list
-        return mergedList;
+        return mergedList; // return mergedList
 
 }  // end merge()
 
