@@ -169,14 +169,44 @@ public void delete(int key){
         // case 1 -- the node we want to delete is a leaf
         if (front.getLeft() == null && front.getRight() == null) {
                 // repoint front's parent to null
-                if(trailer.getLeft().getData() == front.getData()) {
+                if (trailer.getLeft().getData() == front.getData()) { // check to see if front is left of trailer
                         trailer.setLeft(null);
-                } else if (trailer.getRight().getData() == front.getData()) {
+                }
+                else if (trailer.getRight().getData() == front.getData()) { // check to see if front is right of trailer
                         trailer.setRight(null);
                 }
-        } else if (true /* check to see if front has one child */) {
+        }
+
+        // case 2 -- the node we want to delete has one child
+        else if (front.getLeft() == null || front.getRight() == null) { // check if front has only one child (both can't be null or case 1 would catch it)
                 // repoint front's parent to front's child
-        } else {
+
+                if (front.getLeft() == null) { // front only has a right child
+                        // determine if front is left or right of trailer
+                        if (trailer.getLeft().getData() == front.getData()) { // front is left of trailer
+                                trailer.setLeft(front.getRight()); // set trailer left to front.getRight()
+                        }
+                        else if (trailer.getRight().getData() == front.getData()) { // front is right of trailer
+                                trailer.setRight(front.getRight()); // set trailer right to front.getRight()
+                        }
+
+
+
+                }
+                else if (front.getRight() == null) { // front only has left child
+                        // determine if front is left or right of trailer
+                        if (trailer.getLeft().getData() == front.getData()) { // front is left of trailer
+                                trailer.setLeft(front.getLeft()); // set trailer left to front.getLeft()
+                        }
+                        else if (trailer.getRight().getData() == front.getData()) { // front is right of trailer
+                                trailer.setRight(front.getLeft()); // set trailer right to front.getLeft()
+                        }
+
+                }
+        }
+
+        // case 3 -- the node we want to delete has two children
+        else {
                 // front has two children
                 //
                 // find the node with the largest value
