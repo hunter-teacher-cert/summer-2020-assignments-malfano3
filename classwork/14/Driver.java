@@ -13,6 +13,11 @@ public static void main(String[] args) {
         t.insert(8);
         t.insert(3);
         t.insert(25);
+        t.insert(2);
+        t.insert(4);
+        t.insert(6);
+        t.insert(18);
+
 
         t.preorderTraverse();
         t.postorderTraverse();

@@ -31,8 +31,8 @@ public void insert(int key){
 
         TreeNode newNode = new TreeNode(key);
 
-// if the tree is empty
-// manually insert the new node as the root
+        // if the tree is empty
+        // manually insert the new node as the root
         if (root == null) {
                 root = newNode;
                 return;
@@ -133,55 +133,58 @@ public void inorderTraverse(){
 
 public void delete(int key){
 
-	// if the tree is empty, nothing to delete
-	if (root==null){
-	    return;
-	}
+        // if the tree is empty, nothing to delete
+        if (root == null) {
+                return;
+        }
 
 
-	// find the node that we want to delete
-	// and the node above it using piggybacking
-	TreeNode front = root;
-	TreeNode trailer = root;
+        // find the node that we want to delete
+        // and the node above it using piggybacking
+        TreeNode front = root;
+        TreeNode trailer = root;
 
-	// do the piggyback loop
-	// until we either find the node or null
-	// if the key isn't present
-	while (front != null && front.getData() != key ){
-	    if (front.getData() < key){
-		trailer = front;
-		front = front.getRight();
-	    } else {
-		trailer = front;
-		front = front.getLeft();
-	    }
-	}
+        // do the piggyback loop
+        // until we either find the node or null
+        // if the key isn't present
+        while (front != null && front.getData() != key ) {
+                if (key > front.getData()) {
+                        trailer = front;
+                        front = front.getRight();
+                } else {
+                        trailer = front;
+                        front = front.getLeft();
+                }
+        }
 
-	// if the key wasn't in the tree
-	if (front == null){
-	    return;
-	}
+        // if the key wasn't in the tree
+        if (front == null) {
+                return;
+        }
 
-	// if we get here
-	// front points to the node we want to delete
-	// and trailer points to the one above it
+        // if we get here
+        // front points to the node we want to delete
+        // and trailer points to the one above it
 
-	// case 1 -- the node we want to delete is a leaf
-	if (front.getLeft() == null &&
-	    front.getRight() == null) {
+        // case 1 -- the node we want to delete is a leaf
+        if (front.getLeft() == null && front.getRight() == null) {
+                // repoint front's parent to null
+                if(trailer.getLeft().getData() == front.getData()) {
+                        trailer.setLeft(null);
+                } else if (trailer.getRight().getData() == front.getData()) {
+                        trailer.setRight(null);
+                }
+        } else if (true /* check to see if front has one child */) {
+                // repoint front's parent to front's child
+        } else {
+                // front has two children
+                //
+                // find the node with the largest value
+                // on fronts left subtree
+                // and replace front with it.
+        }
 
-	    // repoint front's parent to null
-	} else if (true /* check to see if front has one child */){
-	    // repoint front's parent to front's child
-	} else {
-	    // front has two children
-	    //
-	    // find the node with the largest value
-	    // on fronts left subtree
-	    // and replace front with it.
-	    }
-
-	}
+}
 
 public void seed(){
         TreeNode t;
