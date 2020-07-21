@@ -166,13 +166,17 @@ public void delete(int key){
         // front points to the node we want to delete
         // and trailer points to the one above it
 
+        System.out.println("Front = " + front.getData());
+        System.out.println("Trailer = " + trailer.getData());
+
+
         // case 1 -- the node we want to delete is a leaf
         if (front.getLeft() == null && front.getRight() == null) {
                 // repoint front's parent to null
-                if (trailer.getLeft().getData() == front.getData()) { // check to see if front is left of trailer
+                if (front == trailer.getLeft()) { // check to see if front is left of trailer
                         trailer.setLeft(null);
                 }
-                else if (trailer.getRight().getData() == front.getData()) { // check to see if front is right of trailer
+                else if (front == trailer.getRight()) { // check to see if front is right of trailer
                         trailer.setRight(null);
                 }
         }
@@ -209,9 +213,92 @@ public void delete(int key){
         else {
                 // front has two children
                 //
-                // find the node with the largest value
-                // on fronts left subtree
-                // and replace front with it.
+                // Steps -- find the node with the largest value on fronts left
+                // subtree and replace front with it.
+                //       do the piggyback loop
+                //       until we either find the node to delete
+                //       or null if the key isn't present
+                while (front != null && front.getData() != key) {
+                        if (key > front.getData()) {
+                                trailer = front;
+                                front = front.getRight();
+                        }
+                        else {
+                                trailer = front;
+                                front = front.getLeft();
+                        }
+                }
+                TreeNode tempRightFront = front.getLeft();
+                TreeNode tempRightMiddleTrailer = front;
+                TreeNode tempRightBackTrailer = front;
+
+                System.out.println(tempRightFront.getData());
+                System.out.println(tempRightMiddleTrailer.getData());
+                System.out.println(tempRightBackTrailer.getData());
+
+                TreeNode frontGetRight = front.getRight(); // temp value
+                TreeNode frontGetLeft = front.getLeft(); // temp value
+
+                while(tempRightFront != null) {
+                        tempRightBackTrailer = tempRightMiddleTrailer;
+                        tempRightMiddleTrailer = tempRightFront;
+                        tempRightFront = tempRightFront.getRight();
+                }
+
+                // tempRightMiddleTrailer is at value that will replace front
+
+                if(tempRightMiddleTrailer.getLeft() == null) { // value to replace is a leaf (no children)
+                        if (trailer.getLeft().getData() == front.getData()) { // front is left of trailer
+                                tempRightMiddleTrailer.setRight(front.getRight());
+                                tempRightMiddleTrailer.setLeft(front.getLeft());
+                                trailer.setLeft(tempRightMiddleTrailer); // set trailer left to front.getLeft()
+                                tempRightBackTrailer.setRight(null);
+
+                        }
+                        else if (trailer.getRight().getData() == front.getData()) { // front is right of trailer
+                                tempRightMiddleTrailer.setRight(front.getRight());
+                                tempRightMiddleTrailer.setLeft(tempRightMiddleTrailer.getLeft());
+                                trailer.setRight(tempRightMiddleTrailer); // set trailer right to front.getLeft()
+                                tempRightBackTrailer.setLeft(null);
+                        }
+                }
+
+                else if(tempRightMiddleTrailer.getLeft() != null) { // value is a parent with children
+                        if (trailer.getLeft().getData() == front.getData()) { // front is left of trailer
+                                trailer.setLeft(tempRightMiddleTrailer); // set trailer left to front.getLeft()
+                        }
+                        else if (trailer.getRight().getData() == front.getData()) { // front is right of trailer
+                                trailer.setRight(tempRightMiddleTrailer); // set trailer right to front.getLeft()
+                        }
+
+                        // tempRightMiddleTrailer.setRight(frontGetRight); // need more here...
+
+                        TreeNode leftFront = tempRightMiddleTrailer;
+                        TreeNode leftTrailer = tempRightMiddleTrailer;
+
+                        while(leftFront != null) {
+                                leftTrailer = leftFront;
+                                leftFront = leftFront.getLeft();
+                        }
+                        leftTrailer.setLeft(frontGetLeft);
+
+                        TreeNode rightFront = tempRightMiddleTrailer;
+                        TreeNode rightTrailer = tempRightMiddleTrailer;
+
+                        while(rightFront != null) {
+                                rightTrailer = rightFront;
+                                rightFront = rightFront.getRight();
+                        }
+                        rightTrailer.setRight(frontGetRight);
+
+                        // tempRightBackTrailer.setRight(null); not yet
+
+
+                }
+
+
+
+
         }
 
 }
@@ -226,7 +313,7 @@ public void seed(){
         t = new TreeNode(20);
         root.setRight(t);
 
-        root.getLeft().setRight( new TreeNode(8));
+        root.getLeft().setRight(new TreeNode(8));
 
         t = new TreeNode(15);
         root.getRight().setLeft(t);
