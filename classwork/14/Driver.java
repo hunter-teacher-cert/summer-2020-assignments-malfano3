@@ -35,6 +35,7 @@ public static void main(String[] args) {
 
 
 
+
         System.out.println();
         System.out.println("Full Tree");
         t.preorderTraverse();
@@ -43,11 +44,11 @@ public static void main(String[] args) {
 
         System.out.println();
 
-        int value = 60;
-        System.out.println("Deleting " + value);
-        t.delete(value);
-        t.preorderTraverse();
-        System.out.println();
+        // int value = 60;
+        // System.out.println("Deleting " + value);
+        // t.delete(value);
+        // t.preorderTraverse();
+        // System.out.println();
 
 
 
