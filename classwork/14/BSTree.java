@@ -310,26 +310,6 @@ public void delete(int key){
                                 }
                         }
 
-
-
-
-
-                        // tempRightMiddleTrailer.setRight(frontGetRight); // need more here...
-
-
-
-                        // TreeNode rightFront = tempRightMiddleTrailer;
-                        // TreeNode rightTrailer = tempRightMiddleTrailer;
-                        //
-                        // while(rightFront != null) {
-                        //         rightTrailer = rightFront;
-                        //         rightFront = rightFront.getRight();
-                        // }
-                        // rightTrailer.setRight(frontGetRight);
-
-                        // tempRightBackTrailer.setRight(null); not yet
-
-
                 }
 
 

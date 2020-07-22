@@ -43,7 +43,7 @@ public static void main(String[] args) {
 
         System.out.println();
 
-        int value = 50;
+        int value = 60;
         System.out.println("Deleting " + value);
         t.delete(value);
         t.preorderTraverse();
