@@ -257,33 +257,75 @@ public void delete(int key){
                         }
                 } // THIS IS GOOD
 
-                else if(tempRightMiddleTrailer.getLeft() != null) { // value is a parent with children
-                        if (trailer.getLeft().getData() == front.getData()) { // front is left of trailer
+                else if(tempRightMiddleTrailer.getLeft() != null) { // value to replace is a parent left child (can't have right child)
+
+
+
+
+                        if (front == trailer.getLeft()) { // front is left of trailer
+                                tempRightMiddleTrailer.setRight(front.getRight());
+                                if(tempRightMiddleTrailer != front.getLeft()) {
+                                        // need code here for lowest on left tree
+                                        TreeNode leftFront = tempRightMiddleTrailer.getLeft();
+                                        TreeNode leftTrailer = tempRightMiddleTrailer;
+
+                                        while(leftFront != null) {
+                                                leftTrailer = leftFront;
+                                                leftFront = leftFront.getLeft();
+                                        }
+                                        // need code here for lowest on left tree
+                                        leftTrailer.setLeft(frontGetLeft);
+                                }
                                 trailer.setLeft(tempRightMiddleTrailer); // set trailer left to front.getLeft()
+
+                                if(tempRightMiddleTrailer == tempRightBackTrailer.getLeft()) {
+                                        tempRightBackTrailer.setLeft(null);
+                                }
+                                else if(tempRightMiddleTrailer == tempRightBackTrailer.getRight()) {
+                                        tempRightBackTrailer.setRight(null);
+                                }
+
                         }
-                        else if (trailer.getRight().getData() == front.getData()) { // front is right of trailer
+                        else if (front == trailer.getRight()) { // front is right of trailer
+                                tempRightMiddleTrailer.setRight(front.getRight());
+                                if(tempRightMiddleTrailer != front.getLeft()) {
+                                        // need code here for lowest on left tree
+                                        TreeNode leftFront = tempRightMiddleTrailer.getLeft();
+                                        TreeNode leftTrailer = tempRightMiddleTrailer;
+
+                                        while(leftFront != null) {
+                                                leftTrailer = leftFront;
+                                                leftFront = leftFront.getLeft();
+                                        }
+                                        // need code here for lowest on left tree
+                                        leftTrailer.setLeft(frontGetLeft);
+                                }
                                 trailer.setRight(tempRightMiddleTrailer); // set trailer right to front.getLeft()
+
+                                if(tempRightMiddleTrailer == tempRightBackTrailer.getLeft()) {
+                                        tempRightBackTrailer.setLeft(null);
+                                }
+                                else if(tempRightMiddleTrailer == tempRightBackTrailer.getRight()) {
+                                        tempRightBackTrailer.setRight(null);
+                                }
                         }
+
+
+
+
 
                         // tempRightMiddleTrailer.setRight(frontGetRight); // need more here...
 
-                        TreeNode leftFront = tempRightMiddleTrailer;
-                        TreeNode leftTrailer = tempRightMiddleTrailer;
 
-                        while(leftFront != null) {
-                                leftTrailer = leftFront;
-                                leftFront = leftFront.getLeft();
-                        }
-                        leftTrailer.setLeft(frontGetLeft);
 
-                        TreeNode rightFront = tempRightMiddleTrailer;
-                        TreeNode rightTrailer = tempRightMiddleTrailer;
-
-                        while(rightFront != null) {
-                                rightTrailer = rightFront;
-                                rightFront = rightFront.getRight();
-                        }
-                        rightTrailer.setRight(frontGetRight);
+                        // TreeNode rightFront = tempRightMiddleTrailer;
+                        // TreeNode rightTrailer = tempRightMiddleTrailer;
+                        //
+                        // while(rightFront != null) {
+                        //         rightTrailer = rightFront;
+                        //         rightFront = rightFront.getRight();
+                        // }
+                        // rightTrailer.setRight(frontGetRight);
 
                         // tempRightBackTrailer.setRight(null); not yet
 
