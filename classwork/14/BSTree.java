@@ -202,23 +202,17 @@ public void delete(int key){
                 //       do the piggyback loop
                 //       until we either find the node to delete
                 //       or null if the key isn't present
-                while (front != null && front.getData() != key) {
-                        if (key > front.getData()) {
-                                trailer = front;
-                                front = front.getRight();
-                        }
-                        else {
-                                trailer = front;
-                                front = front.getLeft();
-                        }
-                }
+
+                System.out.println("Front = " + front.getData());
+                System.out.println("Trailer = " + trailer.getData());
+
                 TreeNode tempRightFront = front.getLeft();
                 TreeNode tempRightMiddleTrailer = front;
                 TreeNode tempRightBackTrailer = front;
 
-                System.out.println(tempRightFront.getData());
-                System.out.println(tempRightMiddleTrailer.getData());
-                System.out.println(tempRightBackTrailer.getData());
+                // System.out.println(tempRightFront.getData());
+                // System.out.println(tempRightMiddleTrailer.getData());
+                // System.out.println(tempRightBackTrailer.getData());
 
                 TreeNode frontGetRight = front.getRight(); // temp value
                 TreeNode frontGetLeft = front.getLeft(); // temp value
@@ -231,21 +225,37 @@ public void delete(int key){
 
                 // tempRightMiddleTrailer is at value that will replace front
 
-                if(tempRightMiddleTrailer.getLeft() == null) { // value to replace is a leaf (no children)
-                        if (trailer.getLeft().getData() == front.getData()) { // front is left of trailer
+                if(tempRightMiddleTrailer.getLeft() == null) { // value to replace is a leaf (no children)  THIS IS GOOD
+                        if (front == trailer.getLeft()) { // front is left of trailer
                                 tempRightMiddleTrailer.setRight(front.getRight());
-                                tempRightMiddleTrailer.setLeft(front.getLeft());
+                                if(tempRightMiddleTrailer != front.getLeft()) {
+                                        tempRightMiddleTrailer.setLeft(frontGetLeft);
+                                }
                                 trailer.setLeft(tempRightMiddleTrailer); // set trailer left to front.getLeft()
-                                tempRightBackTrailer.setRight(null);
+
+                                if(tempRightMiddleTrailer == tempRightBackTrailer.getLeft()) {
+                                        tempRightBackTrailer.setLeft(null);
+                                }
+                                else if(tempRightMiddleTrailer == tempRightBackTrailer.getRight()) {
+                                        tempRightBackTrailer.setRight(null);
+                                }
 
                         }
-                        else if (trailer.getRight().getData() == front.getData()) { // front is right of trailer
+                        else if (front == trailer.getRight()) { // front is right of trailer
                                 tempRightMiddleTrailer.setRight(front.getRight());
-                                tempRightMiddleTrailer.setLeft(tempRightMiddleTrailer.getLeft());
+                                if(tempRightMiddleTrailer != front.getLeft()) {
+                                        tempRightMiddleTrailer.setLeft(frontGetLeft);
+                                }
                                 trailer.setRight(tempRightMiddleTrailer); // set trailer right to front.getLeft()
-                                tempRightBackTrailer.setLeft(null);
+
+                                if(tempRightMiddleTrailer == tempRightBackTrailer.getLeft()) {
+                                        tempRightBackTrailer.setLeft(null);
+                                }
+                                else if(tempRightMiddleTrailer == tempRightBackTrailer.getRight()) {
+                                        tempRightBackTrailer.setRight(null);
+                                }
                         }
-                }
+                } // THIS IS GOOD
 
                 else if(tempRightMiddleTrailer.getLeft() != null) { // value is a parent with children
                         if (trailer.getLeft().getData() == front.getData()) { // front is left of trailer

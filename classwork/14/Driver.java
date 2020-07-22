@@ -16,7 +16,11 @@ public static void main(String[] args) {
         t.insert(27);
         t.insert(26);
         t.insert(28);
-        // t.insert(49);
+        t.insert(31);
+        t.insert(32);
+        t.insert(33);
+        t.insert(32);
+        t.insert(40);
         t.insert(75);
         t.insert(65);
         t.insert(60);
@@ -25,9 +29,9 @@ public static void main(String[] args) {
         t.insert(85);
         t.insert(80);
         t.insert(89);
-        t.insert(120);
-        t.insert(100);
-        t.insert(140);
+        // t.insert(120);
+        // t.insert(100);
+        // t.insert(140);
 
 
 
@@ -39,7 +43,7 @@ public static void main(String[] args) {
 
         System.out.println();
 
-        int value = 89;
+        int value = 65;
         System.out.println("Deleting " + value);
         t.delete(value);
         t.preorderTraverse();
